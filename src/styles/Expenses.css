@@ -1,0 +1,8 @@
+.expenses {
+    border: solid 2px white;
+}
+div.expenses {
+    width: 350px;
+    margin: 20px;
+
+}
