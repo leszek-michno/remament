@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const NoAlco = ({ soft }) => {
-  const [cargo, setCargo] = useState("");
-  const [startBottles, setStartBottles] = useState("");
-  const [soldBottles, setSoldBottles] = useState("");
+export const Item = ({ soft, setSoftItemIncomes }) => {
+  const [cargo, setCargo] = useState(0);
+  const [startBottles, setStartBottles] = useState(0);
+  const [soldBottles, setSoldBottles] = useState(0);
 
   const cargoSoft = (e) => setCargo(e.target.value);
   const startB = (e) => setStartBottles(e.target.value);
   const soldB = (e) => setSoldBottles(e.target.value);
 
   const finalState = cargo * 1 + startBottles * 1 - soldBottles;
+
   const softIncome = soldBottles * 1 * soft.price;
+
+  useEffect(() => {
+    setSoftItemIncomes((previousSoftIncomes) => {
+      const newSoftIncomes = { ...previousSoftIncomes };
+      newSoftIncomes[soft.id] = softIncome;
+      return newSoftIncomes;
+    });
+  }, [setSoftItemIncomes, soft, softIncome]);
 
   return (
     <div className="grey">
@@ -45,7 +54,7 @@ const NoAlco = ({ soft }) => {
         <strong>
           {" "}
           {cargo * 1 + startBottles * 1 >= soldBottles ? (
-            (soft.income = softIncome)
+            softIncome
           ) : (
             <span className="alert">B Ł Ą D</span>
           )}
@@ -55,4 +64,3 @@ const NoAlco = ({ soft }) => {
     </div>
   );
 };
-export default React.memo(NoAlco);

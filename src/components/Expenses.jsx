@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../styles/Expenses.css";
 
-const Expenses = ({item}) => {
+const Expenses = ({ item }) => {
   const [priceOne, setPriceOne] = useState(0);
   const [priceTwo, setPriceTwo] = useState(0);
   const [expensesOne, setExpensesOne] = useState(0);
@@ -10,17 +10,15 @@ const Expenses = ({item}) => {
   const [expensesThree, setExpensesThree] = useState(0);
   const [expensesFour, setExpensesFour] = useState(0);
   const [expensesFive, setExpensesFive] = useState(0);
-  
 
-  
-   const expenses = expensesOne * 1 +
-        expensesTwo * 1 +
-        expensesThree * 1 +
-        expensesFour * 1 +
-        expensesFive * 1 +
-        priceOne * 1 +
-        priceTwo * 1;
- 
+  const expenses =
+    expensesOne +
+    expensesTwo +
+    expensesThree +
+    expensesFour +
+    expensesFive +
+    priceOne +
+    priceTwo;
 
   return (
     <div className="expenses">
@@ -74,9 +72,8 @@ const Expenses = ({item}) => {
         onChange={(e) => setExpensesFive(e.target.value)}
       />
       <br />
-   <h2>RAZEM</h2> 
-   <span> {item.expenses = expenses}
-  </span>
+      <h2>RAZEM</h2>
+      <span> {(item.expenses = expenses)}</span>
     </div>
   );
 };
